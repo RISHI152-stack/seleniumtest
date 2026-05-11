@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Run Application') {
             steps {
-                sh 'mvn clean compile exec:java -Dexec.mainClass="com.example.App"'
+                sh 'java -jar target/MavenSelenium-1.0-SNAPSHOT.jar'
             }
         }
     }
