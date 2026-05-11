@@ -1,13 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven' // Make sure 'Maven' is configured in Jenkins Global Tools
-        jdk 'Java'    // Make sure a JDK is configured
-    }
-    environment {
-        // Optional: path to ChromeDriver if not in system PATH
-        CHROMEDRIVER = '/usr/bin/chromedriver'
-        PATH = "${env.CHROMEDRIVER}:${env.PATH}"
+        maven 'Maven' 
     }
     stages {
         stage('Checkout') {
@@ -27,8 +21,7 @@ pipeline {
         }
         stage('Run Application') {
             steps {
-                // Run Selenium headless app
-                sh 'mvn compile exec:java -Dexec.mainClass="com.example.App"'
+                sh 'mvn exec:java -Dexec.mainClass="com.example.App"'
             }
         }
     }
