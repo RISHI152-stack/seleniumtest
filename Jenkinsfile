@@ -6,7 +6,7 @@ pipeline{
   stages{
     stage('Checkout'){
       steps{
-        git branch:'main',url="https://github.com/RISHI152-stack/seleniumtest.git"
+        git branch:'main',url:"https://github.com/RISHI152-stack/seleniumtest.git"
       }
     }
     stage('Build'){
