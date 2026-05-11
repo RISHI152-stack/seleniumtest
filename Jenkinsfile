@@ -1,36 +1,36 @@
-pipeline{
+pipeline {
   agent any
-  tools{
+  tools {
     maven 'Maven'
   }
-  stages{
-    stage('Checkout'){
-      steps{
-        git branch:'main',url:"https://github.com/RISHI152-stack/seleniumtest.git"
+  stages {
+    stage('Checkout') {
+      steps {
+        git branch: 'main', url: "https://github.com/RISHI152-stack/seleniumtest.git"
       }
     }
-    stage('Build'){
-      steps{
-        sh'mvn clean package'
+    stage('Build') {
+      steps {
+        sh 'mvn clean package'
       }
     }
-    stage('Test'){
-      steps{
-        sh'mvn test'
+    stage('Test') {
+      steps {
+        sh 'mvn test'
       }
     }
-    stage('Run-application'){
-      steps{
-        sh'mvn exec:java -Dexec.mainClass="com.example.App"'
+    stage('Run-application') {
+      steps {
+        sh 'mvn compile exec:java -Dexec.mainClass="com.example.App"'
       }
     }
   }
-  post{
-    success{
-      echo'Build and implementation success'
+  post {
+    success {
+      echo 'Build and implementation success'
     }
-    failure{
-      echo'failed'
+    failure {
+      echo 'Build failed'
     }
   }
 }
