@@ -1,12 +1,12 @@
 pipeline{
   agent any
   tools{
-    maven'Maven'
+    maven 'Maven'
   }
   stages{
-    stage('Check-Out'){
+    stage('Checkout'){
       steps{
-        git branch:'main',url=""
+        git branch:'main',url="https://github.com/RISHI152-stack/seleniumtest.git"
       }
     }
     stage('Build'){
@@ -21,7 +21,7 @@ pipeline{
     }
     stage('Run-application'){
       steps{
-        sh'mvn clean install'
+        sh'mvn exec:java -Dexec.mainClass=com.example.java'
       }
     }
   }
